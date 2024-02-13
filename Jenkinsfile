@@ -76,28 +76,15 @@ pipeline {
             }
         }
     }        
-        // stage('Deploy to Kubernets'){
-        //     steps{
-        //         script{
-        //             dir('Kubernetes') {
-        //               withKubeConfig(caCertificate: '', clusterName: '', contextName: '', credentialsId: 'kubernetes', namespace: 'dev', restrictKubeConfigAccess: false, serverUrl: '') {
-        //               sh 'kubectl delete --all pods'
-        //               sh 'kubectl apply -f deployment.yml'
-        //               sh 'kubectl apply -f service.yml'
-        //               }   
-        //             }
-        //         }
-        //     }
-        // }
-    // post {
-    //  always {
-    //     emailext attachLog: true,
-    //         subject: "'${currentBuild.result}'",
-    //         body: "Project: ${env.JOB_NAME}<br/>" +
-    //             "Build Number: ${env.BUILD_NUMBER}<br/>" +
-    //             "URL: ${env.BUILD_URL}<br/>",
-    //         to: 'nd.onyima@gmail.com',                              
-    //         attachmentsPattern: 'trivyfs.txt,trivyimage.txt'
-    //     }
-    // }
+    post {
+     always {
+        emailext attachLog: true,
+            subject: "'${currentBuild.result}'",
+            body: "Project: ${env.JOB_NAME}<br/>" +
+                "Build Number: ${env.BUILD_NUMBER}<br/>" +
+                "URL: ${env.BUILD_URL}<br/>",
+            to: 'nd.onyima@gmail.com',                              
+            attachmentsPattern: 'trivyfs.txt,trivyimage.txt'
+        }
+    }
 }
