@@ -30,9 +30,10 @@ pipeline {
         stage("Push the changed deployment file to GitHub") {
             steps {
                 sh """
+                    cd Kubernetes
                     git config --global user.name "${GIT_USERNAME}"
                     git config --global user.email "${GIT_EMAIL}"
-                    git add Kubernetes/deployment.yml
+                    git add deployment.yml
                     git commit -m "Updated Deployment Manifest"
                 """
                 withCredentials([gitUsernamePassword(credentialsId: 'github', gitToolName: 'Default')]) {
