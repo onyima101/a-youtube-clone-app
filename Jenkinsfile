@@ -6,7 +6,7 @@ pipeline {
     }
     environment {
         SCANNER_HOME = tool 'sonar-scanner'
-        APP_NAME = "youtube-clone"
+        APP_NAME = "youtube-clone-pipeline"
         RELEASE = "1.0.0"
         DOCKER_USER = "onyima101"
         DOCKER_PASS = 'dockerhub'
