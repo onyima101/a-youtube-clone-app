@@ -17,7 +17,7 @@ spec:
       terminationGracePeriodSeconds: 30
       containers:
       - name: youtube-clone-app
-        image: onyima101/youtube-clone-pipeline:1.0.0-34
+        image: onyima101/youtube-clone-pipeline:1.0.0-35
         imagePullPolicy: "Always"
         ports:
         - containerPort: 3000
