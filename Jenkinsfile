@@ -68,6 +68,14 @@ pipeline {
                 sh "trivy image onyima101/youtube-clone:latest > trivyimage.txt" 
             }
         }
+        stage ('Cleanup Artifacts') {
+            steps {
+                script {
+                    sh "docker rmi ${IMAGE_NAME}:${IMAGE_TAG}"
+                    sh "docker rmi ${IMAGE_NAME}:latest"
+                }
+            }
+        }        
 	    stage("Trigger CD Pipeline") {
             steps {
                 script {
